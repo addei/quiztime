@@ -31,6 +31,11 @@ int game(const vector<Question>& newVec) {
         string buff = "";
         getline (cin, buff);
 
+        if (buff.empty()) {
+            cout << "Use arabic numbers only and stay in the given limits please" << endl;
+            continue;
+        }
+
         if(isdigit(buff[0])) {
             quiz = stoi(buff);
             if (quiz <= 0) {
@@ -124,17 +129,18 @@ int game(const vector<Question>& newVec) {
             int answer = 0;
             getline (cin, buff);
 
+            if (buff.empty()) {
+                cout << "Use arabic numbers only and stay in the given limits please" << endl;
+                continue;
+            }
+
             if(isdigit(buff[0])) {
                 answer = stoi(buff);
                 if (answer <= 0) {
                     cout << "Stay in the given limits please" << endl;
                 }
 
-                else if (counter < answer) {
-                    cout << "Stay in the given limits please" << endl;
-                }
-
-                else if (limit < answer){
+                else if ((unsigned int)answer > AnsvecSize) {
                     cout << "Stay in the given limits please" << endl;
                 }
 

@@ -27,13 +27,11 @@ int Hiscores::getPoints() const{
 
 //Mutator functions
 void Hiscores::setName(string modName) {
-    modName = name;
-    //return 0;
+    name = modName;
 }
 
-void Hiscores::setPoints(string modPoints) {
-    modPoints = points;
-    //return 0;
+void Hiscores::setPoints(int modPoints) {
+    points = modPoints;
 }
 
 //Operator overloading
@@ -44,6 +42,11 @@ ostream& operator<< (ostream &out, const Hiscores &h) {
 }
 
 istream& operator>> (istream &in, Hiscores &h) {
-    // https://www.geeksforgeeks.org/overloading-stream-insertion-operators-c/
+    string nameBuff;
+    string pointsBuff;
+    getline(in, nameBuff);
+    getline(in, pointsBuff);
+    h.setName(nameBuff);
+    h.setPoints(stoi(pointsBuff));
     return in;
 }

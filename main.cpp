@@ -52,6 +52,10 @@ int main(void) {
         cout << "> ";
         getline(cin, menu);
         cout << endl;
+        if (menu.empty()) {
+            cout << "Invalid selection\n\n";
+            continue;
+        }
         menu = char(toupper(menu[0]));
             switch (menu[0]) 
             {
@@ -77,6 +81,10 @@ int main(void) {
                     cout << "> ";
                     getline(cin, submenu);
                     cout << endl;
+                    if (submenu.empty()) {
+                        cout << "Invalid selection\n\n";
+                        continue;
+                    }
                     submenu = char(toupper(submenu[0]));
                         switch (submenu[0]) 
                         {

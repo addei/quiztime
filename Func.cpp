@@ -12,6 +12,11 @@ int createObj(vector<Question>& newVec){
         string buff = "";
         getline (cin, buff);
 
+        if (buff.empty()) {
+            cout << "Use arabic numbers only and stay in the given limits please" << endl;
+            continue;
+        }
+
         if(isdigit(buff[0])) {
             x = stoi(buff);
             if (x <= 0) {
@@ -45,7 +50,7 @@ int createObj(vector<Question>& newVec){
         string ans;
         vector <string> answers;
         int cans;
-        bool sta;
+        bool sta = false;
 
         cout << "Enter question: ";
         getline(cin, question);
@@ -157,12 +162,9 @@ void loadObj(vector<Question>& newVec, const string &filename){
     inFile.open(filename);
 
     if (inFile.fail()) {
-        cerr << "Error opening file!";
-        exit(EXIT_FAILURE);
-
-        //jos tiedosto olemassa, totea se on korruptoitunut
-
-        //jos tiedostoa ei ole olemassa, tee uusi.
+        // File does not exist yet; that's OK for a fresh start.
+        inFile.close();
+        return;
     }
     else {
         while (!inFile.eof()) {

@@ -41,7 +41,7 @@ bool Question::getState() const{
 
 //Mutator functions
 void Question::setQuestion(string modquestion){
-    modquestion = question;
+    question = modquestion;
 }
 
 //Operator overloading
